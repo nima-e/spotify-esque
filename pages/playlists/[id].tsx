@@ -1,6 +1,6 @@
+import { JwtPayload } from 'jsonwebtoken'
 import prisma from '../../lib/prisma'
 import { validateToken } from '../../lib/auth'
-import { JwtPayload } from 'jsonwebtoken'
 import GradientLayout from '../../components/GradientLayout'
 import SongTable from '../../components/SongsTable'
 
@@ -49,7 +49,7 @@ export const getServerSideProps = async ({ query, req }) => {
 
   const [playlist] = await prisma.playlist.findMany({
     where: {
-      id: parseInt(query.id),
+      id: parseInt(query.id, 10),
       userId: user.id,
     },
     include: {

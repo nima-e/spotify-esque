@@ -122,7 +122,7 @@ export const Player = ({ songs, activeSong }) => {
           <IconButton
             aria-label="shuffle"
             fontSize="24px"
-            outline={'none'}
+            outline="none"
             variant="link"
             color={shuffle ? 'white' : 'gray.600'}
             onClick={onShuffle}
@@ -131,7 +131,7 @@ export const Player = ({ songs, activeSong }) => {
           <IconButton
             aria-label="skip"
             fontSize="24px"
-            outline={'none'}
+            outline="none"
             variant="link"
             onClick={prevSong}
             icon={<MdSkipPrevious />}
@@ -140,9 +140,9 @@ export const Player = ({ songs, activeSong }) => {
             <IconButton
               aria-label="shuffle"
               fontSize="40px"
-              outline={'none'}
+              outline="none"
               variant="link"
-              color={'white'}
+              color="white"
               onClick={() => setPlayState(false)}
               icon={<MdOutlinePauseCircleFilled />}
             />
@@ -150,7 +150,7 @@ export const Player = ({ songs, activeSong }) => {
             <IconButton
               aria-label="play"
               fontSize="40px"
-              outline={'none'}
+              outline="none"
               variant="link"
               color="white"
               onClick={() => setPlayState(true)}
@@ -161,7 +161,7 @@ export const Player = ({ songs, activeSong }) => {
           <IconButton
             aria-label="next"
             fontSize="24px"
-            outline={'none'}
+            outline="none"
             variant="link"
             onClick={nextSong}
             icon={<MdSkipNext />}
@@ -169,7 +169,7 @@ export const Player = ({ songs, activeSong }) => {
           <IconButton
             aria-label="repeat"
             fontSize="24px"
-            outline={'none'}
+            outline="none"
             variant="link"
             onClick={onRepeat}
             color={repeat ? 'white' : 'gray.600'}
@@ -178,16 +178,17 @@ export const Player = ({ songs, activeSong }) => {
         </ButtonGroup>
       </Center>
       <Box color="gray.600">
-        <Flex justify={'center'} align="center">
-          <Box width={'10%'}>
-            <Text fontSize={'xs'}>{formatTime(seek)}</Text>
+        <Flex justify="center" align="center">
+          <Box width="10%">
+            <Text fontSize="xs">{formatTime(seek)}</Text>
           </Box>
-          <Box width={'80%'}>
+          <Box width="80%">
             <RangeSlider
+              // eslint-disable-next-line jsx-a11y/aria-proptypes
               aria-label={['min', 'max']}
               step={0.1}
               min={0}
-              max={duration ? parseInt(duration.toFixed(2)) : 0}
+              max={duration ? parseInt(duration.toFixed(2), 10) : 0}
               id="player-range"
               onChange={onSeek}
               value={[seek]}
@@ -200,8 +201,8 @@ export const Player = ({ songs, activeSong }) => {
               <RangeSliderThumb index={0} />
             </RangeSlider>
           </Box>
-          <Box width={'10%'} textAlign="right">
-            <Text fontSize={'xs'}>{formatTime(duration)}</Text>
+          <Box width="10%" textAlign="right">
+            <Text fontSize="xs">{formatTime(duration)}</Text>
           </Box>
         </Flex>
       </Box>

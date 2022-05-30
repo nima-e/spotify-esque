@@ -2,26 +2,25 @@ import { Box } from '@chakra-ui/layout'
 import { Table, Thead, Td, Tr, Tbody, IconButton, Th } from '@chakra-ui/react'
 import { BsFillPlayFill } from 'react-icons/bs'
 import { AiOutlineClockCircle } from 'react-icons/ai'
-import { formatDate, formatTime } from '../lib/formatters'
 import { useStoreActions } from 'easy-peasy'
+import { formatDate, formatTime } from '../lib/formatters'
 
 const SongTable = ({ songs }) => {
-    const playSongs = useStoreActions((store: any) => {
-        return store.changeActiveSongs
-    })
-    const setActiveSong = useStoreActions((store: any) => {
-       return  store.changeActiveSong
-    })
+  const playSongs = useStoreActions((store: any) => {
+    return store.changeActiveSongs
+  })
+  const setActiveSong = useStoreActions((store: any) => {
+    return store.changeActiveSong
+  })
 
-    const handlePlay = (activeSong?) => {
-        console.log('hallo')
-        setActiveSong(activeSong || songs[0])
-        playSongs(songs)
-    }
+  const handlePlay = (activeSong?) => {
+    setActiveSong(activeSong || songs[0])
+    playSongs(songs)
+  }
   return (
-    <Box bg="transparent" color={'white'}>
+    <Box bg="transparent" color="white">
       <Box padding="10px" marginBottom="20px">
-        <Box marginBottom={'10px'}>
+        <Box marginBottom="10px">
           <IconButton
             aria-label="play"
             icon={<BsFillPlayFill fontSize="30px" />}
@@ -33,7 +32,7 @@ const SongTable = ({ songs }) => {
         </Box>
         <Table variant="unstyled">
           <Thead
-            borderBottom={'1px solid'}
+            borderBottom="1px solid"
             borderColor="rgba(255, 255, 255, 0.2)"
           >
             <Tr>

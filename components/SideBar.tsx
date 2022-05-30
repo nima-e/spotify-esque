@@ -4,55 +4,53 @@ import {
   ListItem,
   ListIcon,
   Divider,
-  Center,
   LinkBox,
   LinkOverlay,
-} from "@chakra-ui/layout";
+} from '@chakra-ui/layout'
 import {
   MdHome,
   MdSearch,
   MdLibraryMusic,
   MdPlaylistAdd,
   MdFavorite,
-} from "react-icons/md";
-import NextImage from "next/image";
-import NextLink from "next/link";
-import { usePlaylist } from "../lib/hooks";
+} from 'react-icons/md'
+import NextImage from 'next/image'
+import NextLink from 'next/link'
+import { usePlaylist } from '../lib/hooks'
 
 const navvMenu = [
   {
-    name: "Home",
+    name: 'Home',
     icon: MdHome,
-    route: "/",
+    route: '/',
   },
   {
-    name: "Search",
+    name: 'Search',
     icon: MdSearch,
-    route: "/search",
+    route: '/search',
   },
   {
-    name: "Your Library",
+    name: 'Your Library',
     icon: MdLibraryMusic,
-    route: "/library",
+    route: '/library',
   },
-];
+]
 
 const musicMenu = [
   {
-    name: "Create Playlist",
+    name: 'Create Playlist',
     icon: MdPlaylistAdd,
-    route: "/",
+    route: '/',
   },
   {
-    name: "Favorites",
+    name: 'Favorites',
     icon: MdFavorite,
-    route: "/favorites",
+    route: '/favorites',
   },
-];
+]
 
-// const playlists = new Array(30).fill(1).map((_, i) => `Playlist ${1 + 1}`);
 const SideBar = () => {
-  const { playlists}  = usePlaylist()
+  const { playlists } = usePlaylist()
   return (
     <Box
       width="100%"
@@ -62,7 +60,7 @@ const SideBar = () => {
       color="gray"
     >
       <Box paddingY="20px" height="100%">
-        <Box width="120px" marginBottom="20px" paddingX="20px" >
+        <Box width="120px" marginBottom="20px" paddingX="20px">
           <NextImage
             src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg"
             height={60}
@@ -115,17 +113,23 @@ const SideBar = () => {
             {playlists.map((playlist) => (
               <ListItem paddingX="20px" key={playlist.id}>
                 <LinkBox>
-                  <NextLink href={{pathname: '/playlists/[id]', query: {id: playlist.id}}} passHref>
+                  <NextLink
+                    href={{
+                      pathname: '/playlists/[id]',
+                      query: { id: playlist.id },
+                    }}
+                    passHref
+                  >
                     <LinkOverlay>{playlist.name}</LinkOverlay>
                   </NextLink>
                 </LinkBox>
               </ListItem>
             ))}
-          </List>{" "}
+          </List>
         </Box>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default SideBar;
+export default SideBar

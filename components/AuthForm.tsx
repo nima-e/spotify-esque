@@ -1,9 +1,8 @@
 import { Box, Flex, Input, Button } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { FC, useState } from 'react'
-import { useSWRConfig } from 'swr'
-import { auth } from '../lib/mutations'
 import NextImage from 'next/image'
+import { auth } from '../lib/mutations'
 
 const AuthForm: FC<{ mode: 'signin' | 'signup' }> = ({ mode }) => {
   const [email, setEmail] = useState('')
@@ -11,17 +10,13 @@ const AuthForm: FC<{ mode: 'signin' | 'signup' }> = ({ mode }) => {
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
-  const handleSubmit = async (e) => {
-    console.log('on submit')
-    
+  const handleSubmit = async (e: any) => {
     e.preventDefault()
     setIsLoading(true)
 
     await auth(mode, { email, password })
     setIsLoading(false)
     router.push('/')
-    console.log('ROUTER PUSH CALLED')
-    console.log(JSON.stringify(router))
   }
   return (
     <Box height="100vh" width="100vw" bg="black" color="white">
@@ -53,7 +48,6 @@ const AuthForm: FC<{ mode: 'signin' | 'signup' }> = ({ mode }) => {
             />
 
             <Button
-              // onSubmit={() => {console.log('clicky')}}
               type="submit"
               bg="green.500"
               isLoading={isLoading}
